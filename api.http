@@ -1,0 +1,155 @@
+@baseURL=http://localhost:8080/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTBiNmJhMzA4NjQ2YzQ0NjU3NThiYSIsImZpcnN0TmFtZSI6IldpdG5lc3MiLCJsYXN0TmFtZSI6IlRvdWNoc3RvbmUiLCJkb2IiOiIxOTc4LTA5LTE4VDAwOjAwOjAwLjAwMFoiLCJlbWFpbCI6IndpdG5lc3MudG91Y2hzdG9uZUBnbWFpbC5jb20iLCJmaW5nZXJwcmludCI6IjRjNGNkYmFjMGUxNWQyMTVmNmMxNjdjM2MxNDRiOTlmM2NhNzhmMDgxYWU2NTliYjE0OGM5YjU4ZjI2MzlmNDYiLCJpYXQiOjE3MjI4ODQ4MzcsImV4cCI6MTcyMjg5OTIzN30.mflSgLZBxVKoFSpF71lio_3ripC8Bd0B75f-oUuhFbU
+
+######################################################################
+##### User Related APIs ##############################################
+######################################################################
+
+### Get user 
+GET {{baseURL}}/users
+Content-Type: application/json
+
+### login
+POST {{baseURL}}/users/login
+Content-Type: application/json
+
+{
+    "email": "witness.touchstone@gmail.com",
+    "password": "UEBzc3dvcmQxMjM="
+}
+
+### Register
+POST {{baseURL}}/users/register
+Content-Type: application/json
+
+{
+    "firstName": "Terry",
+    "lastName": "Donk",
+    "gender": "male",
+    "dob": "1990-04-01T02:25:13.413Z",
+    "email": "terry.donk@local.com",
+    "password": "UEBzc3dvcmQxMjM=",
+    "phoneCode": "+60",
+    "phoneNumber": "124040101"
+}
+
+### Update user
+PUT {{baseURL}}/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+
+}
+
+### Disable user
+DELETE {{baseURL}}/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason": "disable user reason"
+}
+
+######################################################################
+##### Product Related APIs ###########################################
+######################################################################
+
+### Get products 
+POST {{baseURL}}/users/products
+Content-Type: application/json
+
+{
+    "brandIds": [],
+    "categoryIds": [],
+    "search": "",
+    "page": 1,
+    "limit": 10
+}
+
+######################################################################
+##### Brand Related APIs #############################################
+######################################################################
+
+### Get brands 
+POST {{baseURL}}/users/brands
+Content-Type: application/json
+
+{
+    "page": 1,
+    "limit": 10
+}
+
+######################################################################
+##### Categories Related APIs ########################################
+######################################################################
+
+### Get categories 
+POST {{baseURL}}/users/categories
+Content-Type: application/json
+
+{
+    "page": 1,
+    "limit": 10
+}
+
+######################################################################
+##### Address Related APIs ###########################################
+######################################################################
+
+@addressId=
+
+### Create address
+POST {{baseURL}}/user/addresses
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+}
+
+### Get addresses
+GET {{baseURL}}/user/addresses?limit=10&page=1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Get address
+GET {{baseURL}}/user/addresses/{{addressId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Update address
+PUT {{baseURL}}/user/addresses/{{addressId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+
+}
+
+### Delete address
+DELETE {{baseURL}}/user/addresses/{{addressId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+######################################################################
+##### Cart Related APIs ##############################################
+######################################################################
+
+### Update cart
+PUT {{baseURL}}/users/cart
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "actionType": "remove",
+    "brandId": "660fdb6c6058d3d506f75c41",
+    "productId": "660fb082ec95e832b0eeb1b5",
+    "quantity": 2
+}
+
+### Get cart
+GET {{baseURL}}/users/cart
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
